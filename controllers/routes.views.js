@@ -1,6 +1,6 @@
 exports.home = function(req, res){
-    res.send('Hello World!')
+    res.render('./pages/index', {title: "Node | Home", page: "Home"})
 }
 exports.about = function(req, res){
-    res.send('Hello World! About')
+    res.render('./pages/about', {title: "Node | About", page: "About"})
 }

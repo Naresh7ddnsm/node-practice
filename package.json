@@ -4,16 +4,20 @@
   "description": "node practice ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "sass:build": "node-sass sass/style.scss -o public/css",
+    "sass:watch": "npm run sass:build && node-sass -w ./sass -o ./public/css"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
+    "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
   }
 }

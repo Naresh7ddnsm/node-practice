@@ -8,10 +8,12 @@ const routes= require('./routes');
 
 const port = 3000
 
-/* istanbul ignore next */
+/* ignore next */
 if (!module.parent) {
   app.use(logger('dev'));
 }
+
+app.set('view engine', 'pug')
 
 app.use('/', routes);
 app.use(cookieParser());
