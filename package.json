@@ -5,18 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "copy": "copyfiles ./node_modules/bootstrap/dist/css/bootstrap.min.css ./public/css",
     "sass:build": "node-sass sass/style.scss -o public/css",
     "sass:watch": "npm run sass:build && node-sass -w ./sass -o ./public/css"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^5.0.2",
     "cookie-parser": "^1.4.6",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
   }
