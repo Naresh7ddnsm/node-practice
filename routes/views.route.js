@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let auth = require('./../middleware/auth')
+let views = require('../controllers/views.controller');
 
-var views = require('../controllers/views.controller');
-
-router.get('/', views.Home);
-router.get('/about', views.About);
+router.get('/', auth, views.Home);
+router.get('/about', auth, views.About);
 
 router.get('/login', views.Login);
 router.get('/register', views.Register);

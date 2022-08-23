@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const User = require("./../models/User.model");
 
+const utils = require("./../utils/utils")
+
 exports.login = async function(req, res){
     const {email, password} = req.body;
 
@@ -14,14 +16,24 @@ exports.login = async function(req, res){
         if(!user){
             console.warn('No user found')
         } else {
-            
-            res.redirect("/")
+            let jwtSecretKey = process.env.JWT_SECRET;
+            let data = {
+                time: Date(),
+                userId: user.username,
+                email: user.email
+            }
+            const token = utils.genarateJWT(data, jwtSecretKey)
+            res.cookie("token ", token, {
+                httpOnly: false,
+                secure: process.env.NODE_ENV === "production",
+            }).redirect("/");
         }
     } catch (error){
         console.log(error)
     }
-
-
+}
+exports.logout = function(req, res){
+    return res.clearCookie("token").status(200).redirect('/login')
 }
 exports.register = async function(req, res, next){
 
@@ -40,3 +52,4 @@ exports.register = async function(req, res, next){
         }
     })
 }
+

@@ -1,13 +1,16 @@
 .d-flex.justify-content-between
-    ul.nav 
-        li
-            a(href="/" title="Home") Home
-        li
-            a(href="/about" title="about") About us
-    ul.nav 
-        li 
-            a(href="/login") login
-        li 
-            a(href="/register") Register
-        li 
-            a(href="/logout") logout
+    if user != "" && user != undefined
+        ul.nav 
+            li
+                a(href="/" title="Home") Home
+            li
+                a(href="/about" title="about") About us
+    ul.nav
+        if user=="" || user == undefined
+            li 
+                a(href="/login") login
+            li 
+                a(href="/register") Register
+        else
+            li 
+                a(href="/user/logout") logout

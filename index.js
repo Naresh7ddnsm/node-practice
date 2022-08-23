@@ -8,6 +8,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require("./config/db");
+const cors = require("cors")
 
 const routes= require('./routes');
 
@@ -20,6 +21,7 @@ if (!module.parent) {
 connectDB();
 
 app.use(cookieParser());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 
@@ -29,7 +31,7 @@ app.set('view engine', 'pug')
 
 
 app.use((req, res, next) => {
-  // We can check the updates that need before route change
+  // We can check the updates that need before route change;
   next();
 })
  
